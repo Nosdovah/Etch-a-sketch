@@ -33,6 +33,7 @@ div.sliderContainer {
 
 div.sliderContainer input.slider {
     -webkit-appearance: none;
+    appearance: none;
     width: 60%;
     height: 30px;
     background: linear-gradient(90deg, #FA8072, blue    );

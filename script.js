@@ -15,7 +15,7 @@ const rangeInput = document.querySelectorAll(".sliderContainer input.slider")
 //Menu button
 const colorButton = document.querySelector('.btnColor')
 const randomColorButton = document.querySelector('.btnRandom')
-const eraserButton = document.querySelectorI('.btnErase')
+const eraserButton = document.querySelector('.btnErase')
 const clearButton = document.querySelector('.btnClear')
 
 
@@ -35,10 +35,26 @@ rangeInput.forEach(slider => slider.addEventListener("input", function () {
 //     let button = document.querySelector('item')
 // })
 
+colorButton.addEventListener(('click'),function () {
+   console.log("color button clicked")
+})
+
+randomColorButton.addEventListener(('click'),function () {
+    console.log("random color btn clicked")
+})
+
+eraserButton.addEventListener(('click'),function() {
+    console.log("eraser button clicked")
+}) 
+
+clearButton.addEventListener(('click'),function(){
+    console.log("clear button clicked")
+})  
+
 
 
 function gridItemSizing(size) {
-    let rangeSize = rangeInput[0].value * rangeInput[0].value
+    let rangeSize = size * size
     let buttonDel = document.querySelectorAll(".item")
 
     buttonDel.forEach(element => {
@@ -56,22 +72,22 @@ function gridItemSizing(size) {
 }
 
 //Testing
-function blackColor (buttonObj) {
-    buttonObj.style.color = "black";
+function blackColor () {
+    this.style.background = "black"
 }
 
-function randomColor(buttonObj) {
-    let randColor = "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
-    buttonObj.style.color = `${randColor}`
-}
+// function randomColor() {
+//     let randColor = "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+//     button.style.color = `${randColor}`
+// }
 
-function erase(buttonObj) {
-    buttonObj.style.color = "white"
-}
+// function erase(buttonObj) {
+//     buttonObj.style.color = "white"
+// }
 
-function clear(buttonObj) {
-    buttonObj.forEach(element => {
-        element.style.color = "white"
-    });
-}
+// function clear(buttonObj) {
+//     buttonObj.forEach(element => {
+//         element.style.color = "white"
+//     });
+// }
 
