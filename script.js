@@ -4,6 +4,7 @@ const gridContainerIdName = document.getElementById('container')
 
 //get grid each item by class
 const gridItem = document.getElementsByTagName("item")
+const gridItems = document.querySelectorAll('.item')
 
 //get a list of all css value from the grid container
 const containerObj = window.getComputedStyle(gridContainerIdName)
@@ -18,11 +19,15 @@ const randomColorButton = document.querySelector('.btnRandom')
 const eraserButton = document.querySelector('.btnErase')
 const clearButton = document.querySelector('.btnClear')
 
+//color
+let color = 'black'
+
+
 
 rangeInput.forEach(slider => slider.addEventListener("input", function () {
     //Change grid rows and columns based on slider event
     let rangeSize = rangeInput[0].value;
-    let changeValue = `repeat(${rangeSize} ,1fr)`
+    let changeValue = `repeat(${rangeSize},1fr)`
 
     gridContainerIdName.style.gridTemplateRows = changeValue
     gridContainerIdName.style.gridTemplateColumns = changeValue
@@ -30,29 +35,6 @@ rangeInput.forEach(slider => slider.addEventListener("input", function () {
     gridItemSizing(rangeSize)
 
 }))
-
-// gridItem.forEach(button => button.addEventListener("click") ,function() {
-//     let button = document.querySelector('item')
-// })
-
-colorButton.addEventListener(('click'),function () {
-   console.log("color button clicked")
-})
-
-randomColorButton.addEventListener(('click'),function () {
-    console.log("random color btn clicked")
-})
-
-eraserButton.addEventListener(('click'),function() {
-    console.log("eraser button clicked")
-}) 
-
-clearButton.addEventListener(('click'),function(){
-    console.log("clear button clicked")
-})  
-
-
-
 function gridItemSizing(size) {
     let rangeSize = size * size
     let buttonDel = document.querySelectorAll(".item")
@@ -67,15 +49,34 @@ function gridItemSizing(size) {
         button.className = "item"
         gridContainerIdName.insertAdjacentElement("beforeend", button)
 
-    
+        //Coloring a button
+        colorButton.addEventListener(('click'), function () {
+            button.addEventListener(('mouseover'), function () {
+                button.style.background = "black"
+            })
+        })
+        randomColorButton.addEventListener(('click'), function () {
+            button.addEventListener(('mouseover'),function() {
+                let randColor = "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+                button.style.background = `${randColor}`
+            })
+        })
+
+        eraserButton.addEventListener(('click'), function () {
+            button.addEventListener(('mouseover'),function() {
+                button.style.background ="white"
+            })
+        })
+
+        clearButton.addEventListener(('click'), function () {
+            button.style.background = "white"
+        })
+ 
+
     }
 }
 
 //Testing
-function blackColor () {
-    this.style.background = "black"
-}
-
 // function randomColor() {
 //     let randColor = "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
 //     button.style.color = `${randColor}`

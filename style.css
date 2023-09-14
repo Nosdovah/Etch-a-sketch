@@ -19,11 +19,11 @@ div#container {
 
 }
 
-div.container div.item{
+/* div.container div.item{
     background-color: #FA8072;
-    height: 1fr;
-    width: 1fr;
-}
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(1,1fr);
+} */
 
 div.sliderContainer {
     width: 100%;
@@ -34,7 +34,7 @@ div.sliderContainer {
 div.sliderContainer input.slider {
     -webkit-appearance: none;
     appearance: none;
-    width: 60%;
+    width: 50%;
     height: 30px;
     background: linear-gradient(90deg, #FA8072, blue    );
     -webkit-transition: 0.2s;
@@ -44,5 +44,14 @@ div.sliderContainer input.slider {
     border-radius: 12px;
     box-shadow: 0px 1px 10px 1px black;
 
+}
+
+main div.sliderContainer input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #D21F3c;
+    border-radius: 50%;
 }
 
