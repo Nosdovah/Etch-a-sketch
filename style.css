@@ -3,13 +3,9 @@
     padding: 0;
 }
 
-main {
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-}
 div#container { 
-    width: 500px;
+    flex: 1 2 auto;
+    width: 50%;
     height: 500px;
     display: grid;
     background-color: #D21F3c;
@@ -19,6 +15,10 @@ div#container {
 
 }
 
+main div.buttonContainer {
+    height: 10vh;   
+}
+
 /* div.container div.item{
     background-color: #FA8072;
     grid-template-columns: repeat(1,1fr);
@@ -26,9 +26,9 @@ div#container {
 } */
 
 div.sliderContainer {
+    flex: 1 4 auto;
     width: 100%;
     height: 10vh;
-    justify-content: center;
 }
 
 div.sliderContainer input.slider {
