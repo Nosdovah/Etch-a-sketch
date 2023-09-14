@@ -11,36 +11,67 @@ const containerObj = window.getComputedStyle(gridContainerIdName)
 //get slider range value with it's class
 const rangeInput = document.querySelectorAll(".sliderContainer input.slider")
 //a function to get slider range value each time u slide it
+
+//Menu button
+const colorButton = document.querySelector('.btnColor')
+const randomColorButton = document.querySelector('.btnRandom')
+const eraserButton = document.querySelectorI('.btnErase')
+const clearButton = document.querySelector('.btnClear')
+
+
 rangeInput.forEach(slider => slider.addEventListener("input", function () {
     //Change grid rows and columns based on slider event
-    let changeValue = `repeat(${rangeInput[0].value},100px)`
+    let rangeSize = rangeInput[0].value;
+    let changeValue = `repeat(${rangeSize} ,1fr)`
 
     gridContainerIdName.style.gridTemplateRows = changeValue
     gridContainerIdName.style.gridTemplateColumns = changeValue
 
-    //Create a button element into grid container as a child node
-    let button = document.createElement("button")
-    button.className = "item"
-    button.id = "item"
+    gridItemSizing(rangeSize)
+
+}))
+
+// gridItem.forEach(button => button.addEventListener("click") ,function() {
+//     let button = document.querySelector('item')
+// })
+
+
+
+function gridItemSizing(size) {
+    let rangeSize = rangeInput[0].value * rangeInput[0].value
+    let buttonDel = document.querySelectorAll(".item")
+
+    buttonDel.forEach(element => {
+        element.remove()
+    });
+
+    for (let index = 0; index < rangeSize; index++) {
+        //Create a button element into grid container as a child node
+        let button = document.createElement("button")
+        button.className = "item"
+        gridContainerIdName.insertAdjacentElement("beforeend", button)
+
     
-    //still dont know the logic behind create grid element
-    //document.getElementById("container").appendChild(button)
-}))
+    }
+}
 
+//Testing
+function blackColor (buttonObj) {
+    buttonObj.style.color = "black";
+}
 
+function randomColor(buttonObj) {
+    let randColor = "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+    buttonObj.style.color = `${randColor}`
+}
 
+function erase(buttonObj) {
+    buttonObj.style.color = "white"
+}
 
-const gridCointainerList = document.querySelectorAll('.container')
-gridCointainerList.forEach(item => item.addEventListener('click', function () {
+function clear(buttonObj) {
+    buttonObj.forEach(element => {
+        element.style.color = "white"
+    });
+}
 
-    // let changeValue = `repeat(${4},100px)`
-    // gridContainerIdName.style.gridTemplateRows = changeValue
-
-}))
-
-
-
-const button = document.querySelectorAll('.item')
-button.forEach(node => node.addEventListener('click', function (element) {
-    //console.log(element.currentTarget.classList.value)
-}))
